@@ -18,7 +18,12 @@ def scraper(url, outer_tag, outer_attr, outer_attr_name, inner_tag, inner_attr, 
 	for outer_ in soup.find_all(outer_tag,{outer_attr : outer_attr_name}):
 		for inner_ in outer_.find_all( inner_tag,{inner_attr : inner_attr_name}):
 			content.append(inner_.text.encode('utf-8'))
+	for i in range(len(content)):
+		content[i]=' '.join(content[i].split())
+		#content[i]= ''.join([ch for ch in content[i] if ord(ch)<=128])
+		#content[i]=content[i].strip()
 	print content
+
 
 def decode_prams():
 	pass
